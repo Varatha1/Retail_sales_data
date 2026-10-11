@@ -43,14 +43,15 @@ File: [`sales_project.pbix`](sales_project.pbix)
 - Built an interactive sales revenue dashboard
 
 ## Key Insights
-> Replace these with your own findings.
-- [Region] had the highest profit, while [Region] had the lowest.
-- Orders with discounts above [X]% showed [lower/negative] profit.
-- Sales peaked in [month] and dropped in [month].
-- [X]% of orders took more than 5 days to ship.
+> Findings.
+- South had the highest profit, while West had the lowest.
+- Orders with discounts 11% - 20% showed Higher profit.
+- Sales peaked in January 2024 and dropped in May 2025.
+- 16.76% of orders took more than 5 days to ship.
 
 ## Dashboard Preview
-> Add a screenshot: upload an image to the repo and link it, e.g. `![Dashboard](dashboard.png)`
+><img width="615" height="347" alt="image" src="https://github.com/user-attachments/assets/a4ec15d3-6719-418a-86a1-845cd495941c" />
+
 
 ## Repository Structure
 ```
