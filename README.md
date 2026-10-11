@@ -1,3 +1,8 @@
+Retail_sales_data
+
+Microsoft Excel MYSQL Power BI  Canva GitHub
+
+
 Excel - 
 Cleaned the messy data with 1850+ records
 remove the duplicate
