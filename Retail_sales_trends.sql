@@ -1,22 +1,22 @@
 Select *
 from retail_sales_raw1;
-
+----------------------------------------------------------------------------------------------------------------------------------
 /* Total Profit by Region*/
 Select 
 	Region, 
     Sum(Quantity) AS Total_quantity,
-    Sum(Total_net_revenue) as total_profit
+    round(Sum(Total_net_revenue),2) as total_profit
 from retail_sales_raw1
 group by Region;
-
+----------------------------------------------------------------------------------------------------------------------------------
 /* Total sales by the state*/
 select 
 	State, 
-    sum(Sales) as Total_sales
+    round(sum(Sales),2) as Total_sales
 from retail_sales_raw1
 group by State
 order by Total_sales desc ;
-
+----------------------------------------------------------------------------------------------------------------------------------
 /* No. Of. Days between the order date and ship date */
 select 
 Order_ID,
@@ -25,7 +25,7 @@ Ship_Date,
 datediff(Ship_Date , Order_Date ) as time_gape,
 if(datediff(Ship_Date , Order_Date ) >5, 'Improve shipment','Good Work') as Review
 from retail_sales_raw1;
-
+----------------------------------------------------------------------------------------------------------------------------------
 /* Shipment percentage */
 SELECT
     ROUND(
@@ -40,7 +40,7 @@ FROM retail_sales_raw1
 WHERE Order_Date IS NOT NULL
   AND Ship_Date IS NOT NULL;
 
-
+----------------------------------------------------------------------------------------------------------------------------------
 /* Monthly sales trends*/
 WITH monthly_sales AS (
     SELECT
@@ -56,7 +56,7 @@ sales_with_previous AS (
         LAG(Sales) OVER (
             ORDER BY Order_Date
         ) AS previous_month_sales
-    FROM retail_sales_raw1
+    FROM monthly_sales
 )
 SELECT
     Order_Date,
@@ -69,13 +69,13 @@ SELECT
     ) AS growth_percentage
 FROM sales_with_previous
 ORDER BY Order_Date;
-
+----------------------------------------------------------------------------------------------------------------------------------
 
 select
 	Region, Quantity, Discount
    FROM retail_sales_raw1
    where Discount > 10;
-	
+----------------------------------------------------------------------------------------------------------------------------------	
 /*Discount impacts */
 SELECT
     CASE
@@ -92,7 +92,7 @@ SELECT
 FROM retail_sales_raw1
 GROUP BY discount_range
 ORDER BY MIN(Discount);
-
+----------------------------------------------------------------------------------------------------------------------------------
 /*Top 5 sales by month */
 
 SELECT
@@ -102,7 +102,7 @@ FROM retail_sales_raw1
 GROUP BY DATE_FORMAT(Order_Date, '%Y-%m')
 ORDER BY total_sales DESC
 LIMIT 5;
-
+----------------------------------------------------------------------------------------------------------------------------------
 /*Sales peaked  and dropped in month */
 
 WITH monthly_sales AS (
